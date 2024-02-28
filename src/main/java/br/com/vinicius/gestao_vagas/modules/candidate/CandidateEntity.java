@@ -22,26 +22,58 @@ import lombok.Data;
 public class CandidateEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(
+        strategy = GenerationType.UUID
+    )
     private UUID id;
 
-    @Schema(example = "Vinicius Aristimunha Pinto", requiredMode = RequiredMode.REQUIRED, description = "Nome do candidato")
+    @Schema(
+        example = "Vinicius Aristimunha Pinto", 
+        requiredMode = RequiredMode.REQUIRED, 
+        description = "Nome do candidato"
+    )
     private String name;
 
     @NotBlank()
-    @Pattern(regexp = "\\S+", message = "O campo [username] não deve conter espaço")
-    @Schema(example = "viniciusari", requiredMode = RequiredMode.REQUIRED, description = "Usuário do candidato")
+    @Pattern(
+        regexp = "\\S+", 
+        message = "O campo [username] não deve conter espaço"
+    )
+    @Schema(
+        example = "viniciusari", 
+        requiredMode = RequiredMode.REQUIRED, 
+        description = "Usuário do candidato"
+    )
     private String username;
 
-    @Email(message = "O campo [email] deve conter um e-mail válido")
-    @Schema(example = "vinicius@gmail.com", requiredMode = RequiredMode.REQUIRED, description = "E-mail do candidato")
+    @Email(
+        message = "O campo [email] deve conter um e-mail válido"
+    )
+    @Schema(
+        example = "vinicius@gmail.com", 
+        requiredMode = RequiredMode.REQUIRED, 
+        description = "E-mail do candidato"
+    )
     private String email;
 
-    @Length(min = 10, max = 100, message = "O campo [password] deve conter entre 10 e 100 caracteres")
-    @Schema(example = "admin@123456789", minLength = 10, maxLength = 100, requiredMode = RequiredMode.REQUIRED, description = "Senha do candidato")
+    @Length(
+        min = 10, 
+        max = 100, 
+        message = "O campo [password] deve conter entre 10 e 100 caracteres"
+    )
+    @Schema(
+        example = "admin@123456789", 
+        minLength = 10, maxLength = 100, 
+        requiredMode = RequiredMode.REQUIRED, 
+        description = "Senha do candidato"
+    )
     private String password;
 
-    @Schema(example = "Desenvolvedor Front-End transicionando para FullStack", requiredMode = RequiredMode.REQUIRED, description = "Breve descrição do candidato")
+    @Schema(
+        example = "Desenvolvedor Front-End transicionando para FullStack", 
+        requiredMode = RequiredMode.REQUIRED, 
+        description = "Breve descrição do candidato"
+    )
     private String description;
     
     private String curriculum; 
