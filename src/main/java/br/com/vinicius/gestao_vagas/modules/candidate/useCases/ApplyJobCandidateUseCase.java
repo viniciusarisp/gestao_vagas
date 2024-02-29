@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.vinicius.gestao_vagas.exceptions.JobNotFoundException;
 import br.com.vinicius.gestao_vagas.exceptions.UserNotFoundException;
 import br.com.vinicius.gestao_vagas.modules.candidate.CandidateRepository;
+import br.com.vinicius.gestao_vagas.modules.candidate.entity.ApplyJobEntity;
 import br.com.vinicius.gestao_vagas.modules.candidate.repository.ApplyJobRepository;
 import br.com.vinicius.gestao_vagas.modules.company.repositories.JobRepository;
 
@@ -25,7 +26,7 @@ public class ApplyJobCandidateUseCase {
 
     //ID do candidato
     //ID da vaga
-    public void execute(UUID idCandidate, UUID idJob) {
+    public ApplyJobEntity execute(UUID idCandidate, UUID idJob) {
         
         //Validar se o candidato existe
         this.candidateRepository.findById(idCandidate)
@@ -40,7 +41,12 @@ public class ApplyJobCandidateUseCase {
         });
 
         //Candidato se inscrever na vaga
-
-
+        var applyJob = ApplyJobEntity
+            .builder()
+            .candidateId(idCandidate)
+            .jobId(idJob)
+            .build();
+        applyJob = applyJobRepository.save(applyJob);
+        return applyJob;
     }
 }
